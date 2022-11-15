@@ -1,0 +1,117 @@
+PS C:\Users\kaiser97\OneDrive\Desktop\2022_DATH\model_yolov5\yolov5> python train.py --img 320 --batch 16 --epochs 10 --data dataset.yaml --weights yolov5s.pt --workers 2
+train: weights=yolov5s.pt, cfg=, data=dataset.yaml, hyp=data\hyps\hyp.scratch-low.yaml, epochs=10, batch_size=16, imgsz=320, rect=False, resume=False, nosave=False, noval=False, noautoanchor=False, noplots=False, evolve=None, bucket=, cache=None, image_weights=False, device=, multi_scale=False, single_cls=False, optimizer=SGD, sync_bn=False, workers=2, project=runs\train, name=exp, exist_ok=False, quad=False, cos_lr=False, label_smoothing=0.0, patience=100, freeze=[0], save_period=-1, seed=0, local_rank=-1, entity=None, upload_dataset=False, bbox_interval=-1, artifact_alias=latest
+github: up to date with https://github.com/ultralytics/yolov5 
+YOLOv5  v6.1-354-g08c8c3e Python-3.9.12 torch-1.12.0 CPU
+
+hyperparameters: lr0=0.01, lrf=0.01, momentum=0.937, weight_decay=0.0005, warmup_epochs=3.0, warmup_momentum=0.8, warmup_bias_lr=0.1, box=0.05, cls=0.5, cls_pw=1.0, obj=1.0, obj_pw=1.0, iou_t=0.2, anchor_t=4.0, fl_gamma=0.0, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.0, translate=0.1, scale=0.5, shear=0.0, perspective=0.0, flipud=0.0, fliplr=0.5, mosaic=1.0, mixup=0.0, copy_paste=0.0
+Weights & Biases: run 'pip install wandb' to automatically track and visualize YOLOv5  runs (RECOMMENDED)
+TensorBoard: Start with 'tensorboard --logdir runs\train', view at http://localhost:6006/
+Downloading https://github.com/ultralytics/yolov5/releases/download/v6.1/yolov5s.pt to yolov5s.pt...
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 14.1M/14.1M [00:06<00:00, 2.44MB/s]
+
+Overriding model.yaml nc=80 with nc=17
+
+                 from  n    params  module                                  arguments
+  0                -1  1      3520  models.common.Conv                      [3, 32, 6, 2, 2]
+  1                -1  1     18560  models.common.Conv                      [32, 64, 3, 2]
+  2                -1  1     18816  models.common.C3                        [64, 64, 1]
+  3                -1  1     73984  models.common.Conv                      [64, 128, 3, 2]
+  4                -1  2    115712  models.common.C3                        [128, 128, 2]
+  5                -1  1    295424  models.common.Conv                      [128, 256, 3, 2]
+  6                -1  3    625152  models.common.C3                        [256, 256, 3]
+  7                -1  1   1180672  models.common.Conv                      [256, 512, 3, 2]
+  8                -1  1   1182720  models.common.C3                        [512, 512, 1]
+  9                -1  1    656896  models.common.SPPF                      [512, 512, 5]
+ 10                -1  1    131584  models.common.Conv                      [512, 256, 1, 1]
+ 11                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 12           [-1, 6]  1         0  models.common.Concat                    [1]
+ 13                -1  1    361984  models.common.C3                        [512, 256, 1, False]
+ 14                -1  1     33024  models.common.Conv                      [256, 128, 1, 1]
+ 15                -1  1         0  torch.nn.modules.upsampling.Upsample    [None, 2, 'nearest']
+ 16           [-1, 4]  1         0  models.common.Concat                    [1]
+ 17                -1  1     90880  models.common.C3                        [256, 128, 1, False]
+ 18                -1  1    147712  models.common.Conv                      [128, 128, 3, 2]
+ 19          [-1, 14]  1         0  models.common.Concat                    [1]
+ 20                -1  1    296448  models.common.C3                        [256, 256, 1, False]
+ 21                -1  1    590336  models.common.Conv                      [256, 256, 3, 2]
+ 22          [-1, 10]  1         0  models.common.Concat                    [1]
+ 23                -1  1   1182720  models.common.C3                        [512, 512, 1, False]
+ 24      [17, 20, 23]  1     59334  models.yolo.Detect                      [17, [[10, 13, 16, 30, 33, 23], [30, 61, 62, 45, 59, 119], [116, 90, 156, 198, 373, 326]], [128, 256, 512]]
+Model summary: 270 layers, 7065478 parameters, 7065478 gradients, 16.1 GFLOPs
+
+Transferred 343/349 items from yolov5s.pt
+Scaled weight_decay = 0.0005
+optimizer: SGD with parameter groups 57 weight (no decay), 60 weight, 60 bias
+train: Scanning 'C:\Users\kaiser97\OneDrive\Desktop\2022_DATH\model_yolov5\data\labels' images and labels...83 found, 3 missing, 0 empty, 0 corrupt: 100%|███████
+train: New cache created: C:\Users\kaiser97\OneDrive\Desktop\2022_DATH\model_yolov5\data\labels.cache
+val: Scanning 'C:\Users\kaiser97\OneDrive\Desktop\2022_DATH\model_yolov5\data\labels.cache' images and labels... 83 found, 3 missing, 0 empty, 0 corrupt: 100%|██
+Plotting labels to runs\train\exp2\labels.jpg... 
+
+AutoAnchor: 4.02 anchors/target, 1.000 Best Possible Recall (BPR). Current anchors are a good fit to dataset 
+Image sizes 320 train, 320 val
+Using 2 dataloader workers
+Logging results to runs\train\exp2
+Starting training for 10 epochs...
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       0/9        0G    0.1105   0.01484   0.08015        11       320: 100%|██████████| 6/6 [00:41<00:00,  6.86s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:09<00:00,  3.29s/it]
+                 all         86         83     0.0133      0.808     0.0242    0.00538
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       1/9        0G    0.1036   0.01671   0.07511        12       320: 100%|██████████| 6/6 [00:33<00:00,  5.50s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:10<00:00,  3.48s/it]
+                 all         86         83     0.0131       0.83     0.0411    0.00959
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       2/9        0G   0.08283   0.01858   0.06733        13       320: 100%|██████████| 6/6 [00:32<00:00,  5.45s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:10<00:00,  3.53s/it]
+                 all         86         83     0.0148      0.959     0.0965     0.0267
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       3/9        0G   0.08313    0.0219   0.06375        21       320: 100%|██████████| 6/6 [00:32<00:00,  5.47s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:09<00:00,  3.28s/it]
+                 all         86         83      0.014      0.986      0.112     0.0331
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       4/9        0G   0.07371   0.02362   0.05775        18       320: 100%|██████████| 6/6 [00:35<00:00,  5.87s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:09<00:00,  3.22s/it]
+                 all         86         83      0.014          1      0.157      0.066
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       5/9        0G   0.07103   0.02504   0.05637        17       320: 100%|██████████| 6/6 [00:32<00:00,  5.49s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:10<00:00,  3.43s/it]
+                 all         86         83      0.114      0.538      0.219      0.079
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       6/9        0G   0.06431   0.02279   0.05299        16       320: 100%|██████████| 6/6 [00:33<00:00,  5.58s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:10<00:00,  3.45s/it]
+                 all         86         83      0.757     0.0576      0.295      0.126
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       7/9        0G    0.0629   0.02359   0.04922        16       320: 100%|██████████| 6/6 [00:34<00:00,  5.79s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:10<00:00,  3.52s/it]
+                 all         86         83      0.759      0.198      0.349      0.176
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       8/9        0G   0.06106    0.0243   0.04534        16       320: 100%|██████████| 6/6 [00:33<00:00,  5.51s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:09<00:00,  3.14s/it]
+                 all         86         83       0.49      0.361      0.407      0.218
+
+     Epoch   gpu_mem       box       obj       cls    labels  img_size
+       9/9        0G   0.05497   0.02402   0.04284        12       320: 100%|██████████| 6/6 [00:33<00:00,  5.55s/it]
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:09<00:00,  3.24s/it]
+                 all         86         83      0.486      0.481      0.437      0.228
+
+10 epochs completed in 0.125 hours.
+Optimizer stripped from runs\train\exp2\weights\last.pt, 14.4MB
+Optimizer stripped from runs\train\exp2\weights\best.pt, 14.4MB
+
+Validating runs\train\exp2\weights\best.pt...
+Fusing layers... 
+Model summary: 213 layers, 7055974 parameters, 0 gradients, 15.9 GFLOPs
+               Class     Images     Labels          P          R     mAP@.5 mAP@.5:.95: 100%|██████████| 3/3 [00:12<00:00,  4.12s/it]
+                 all         86         83      0.482      0.469      0.434      0.227
+               awake         86         37      0.524      0.243      0.372      0.196
+              drowsy         86         46      0.439      0.696      0.496      0.258
+Results saved to runs\train\exp2
